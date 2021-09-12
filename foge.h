@@ -1,3 +1,6 @@
+#ifndef _FOGE_H_
+#define  _FOGE_H_
+
 #define CIMA 'w'
 #define BAIXO 's'
 #define DIREITA 'd'
@@ -15,3 +18,5 @@ void fantasma();
 int paraondefantasma(int xatual, int yatual, int *xdestino, int *ydestino);
 void explodepilula();
 void explodepiluladirecao(int x, int y, int somax, int somay, int qtd);
+
+#endif

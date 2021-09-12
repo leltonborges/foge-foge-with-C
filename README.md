@@ -1,9 +1,5 @@
 # Mine games com C
-
-## Representações
-* '@' é personagem
-* 'F' é fantasama
-* 'P' é pilula/bomba
+![img_2.png](img_2.png)
 
 ## Movimentação
 * 'w' para cima

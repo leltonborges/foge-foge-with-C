@@ -1,3 +1,6 @@
+#ifndef _MAPA_H_
+#define _MAPA_H_
+
 #define HEROI '@'
 #define FANTASMA 'F'
 #define VAZIO '.'
@@ -28,8 +31,6 @@ void lermapa(MAPA *m);
 
 void alocamapa(MAPA *m);
 
-void imprirmapa(MAPA *m);
-
 int encontramapa(MAPA *m, POSICAO *p, char c);
 
 int ehvalida(MAPA *m, int x, int y);
@@ -43,3 +44,5 @@ int podeandar(MAPA *m, char personagem, int x, int y);
 int ehparede(MAPA *m, int x, int y);
 
 int ehpersonagem(MAPA *m, char personagem, int x, int y);
+
+#endif

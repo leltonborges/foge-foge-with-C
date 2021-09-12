@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -44,12 +45,6 @@ void alocamapa(MAPA *m) {
     m->matriz = malloc(sizeof(char *) * m->linhas);
     for (int i = 0; i < m->linhas; ++i) {
         m->matriz[i] = malloc(sizeof(char) * (m->colunas + 1));
-    }
-}
-
-void imprirmapa(MAPA *m) {
-    for (int i = 0; i < 5; ++i) {
-        printf("%s\n", m->matriz[i]);
     }
 }
 
