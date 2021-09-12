@@ -6,16 +6,20 @@
 
 MAPA m;
 POSICAO heroi;
+int tempilula = 0;
 
 int main() {
     lermapa(&m);
     encontramapa(&m, &heroi, HEROI);
 
     do {
+        if (tempilula) printf("Quantidade pilula: %d\n", tempilula);
+        printf("Tem pilula: %s\n", (tempilula ? "SIM" : "NÃO"));
         imprirmapa(&m);
         char comando;
         scanf(" %c", &comando);
         move(comando);
+        if (comando == BOMBA) explodepilula();
         fantasma();
     } while (!acabou());
 
@@ -50,6 +54,10 @@ void move(char direcao) {
             break;
     }
     if (!podeandar(&m, HEROI, proximox, proximoy)) return;
+
+    if (ehpersonagem(&m, PILULA, proximox, proximoy)) {
+        tempilula++;
+    }
 
     andanomapa(&m, heroi.x, heroi.y, proximox, proximoy);
     heroi.x = proximox;
@@ -104,3 +112,26 @@ int paraondefantasma(int xatual, int yatual, int *xdestino, int *ydestino) {
     return 0;
 }
 
+void explodepilula() {
+    if (!tempilula) return;
+
+    explodepiluladirecao(heroi.x, heroi.y, 0, 1, 3);
+    explodepiluladirecao(heroi.x, heroi.y, 0, -1, 3);
+    explodepiluladirecao(heroi.x, heroi.y, 1, 0, 3);
+    explodepiluladirecao(heroi.x, heroi.y, -1, 0, 3);
+
+    tempilula = 0;
+}
+
+void explodepiluladirecao(int x, int y, int somax, int somay, int qtd) {
+    if (qtd == 0) return;
+
+    int novox = x + somax;
+    int novoy = y + somay;
+
+    if (!ehvalida(&m, novox, novoy)) return;
+    if (ehparede(&m, novox, novoy)) return;
+
+    m.matriz[novox][novoy] = VAZIO;
+    explodepiluladirecao(novox, novoy, somax, somay, qtd - 1);
+}
