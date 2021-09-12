@@ -10,4 +10,5 @@ int ehdirecao(char direcao);
 void move(char dicecao);
 
 void fantasma();
-int paraondefantasmavai(int xatual, int yatual, int *xdestino, int *ydestino);
+
+int paraondefantasma(int xatual, int yatual, int *xdestino, int *ydestino);
